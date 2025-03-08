@@ -102,3 +102,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xIndex: 0
   yIndex: 0
+  interpolationType: 4

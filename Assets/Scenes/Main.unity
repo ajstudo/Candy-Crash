@@ -481,6 +481,7 @@ MonoBehaviour:
   - {fileID: 2503322733005568529, guid: bf1dcb4e2605e574b8f0ecd64ca2efa3, type: 3}
   - {fileID: 4393584074577848177, guid: 430baa24ba436fc4faa6e93047e4a881, type: 3}
   - {fileID: 4399234256219247861, guid: 52f30cef6e4fdfc459d92394fef25943, type: 3}
+  swapSpeed: 0.25
 --- !u!4 &901762913
 Transform:
   m_ObjectHideFlags: 0
