@@ -100,6 +100,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28efa3f11278faf4caf54f4eb76e7192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xIndex: 0
-  yIndex: 0
   interpolationType: 4
+  <matchValue>k__BackingField: 3

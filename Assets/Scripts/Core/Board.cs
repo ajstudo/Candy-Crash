@@ -1,4 +1,6 @@
 using AJStudios.Puzzle.Gameplay;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AJStudios.Puzzle.Core
@@ -164,13 +166,56 @@ namespace AJStudios.Puzzle.Core
             return false;
         }
 
-        /*
-          for(int i=1; i<6; i++)
-          {
-               nextX = startX + (int) Mathf.Clamp(searchDirection.x, 0, 1) * i;
-               nextY = startY + (int) Mathf.Clamp(searchDirection.y, 0, 1) * i;
-          }
-         */
+        List<GamePiece> FindMatches(int startX, int startY, Vector2 searchDirection, int minLength = 3)
+        {
+            List<GamePiece> matches = new List<GamePiece>();
+
+            GamePiece startPiece = null;
+
+            if(IsWithinBounds(startX, startY))
+            {
+                startPiece = _allGamePiece[startX, startY];
+            }
+
+            if(startPiece != null)
+            {
+                matches.Add(startPiece);
+            }
+
+            int maxValue = (width > height) ? width : height;
+
+            int nextX;
+            int nextY;
+
+            for(int i = 1; i < maxValue-1; i++)
+            {
+                nextX = startX + (int)Mathf.Clamp(searchDirection.x, -1, 1) * i;
+                nextY = startY + (int)Mathf.Clamp(searchDirection.y, -1, 1) * i;
+
+                if(!IsWithinBounds(nextX, nextY))
+                {
+                    break;
+                }
+
+                GamePiece nextPiece = _allGamePiece[nextX, nextY];
+                if (nextPiece.matchValue == startPiece.matchValue && !matches.Contains(nextPiece))
+                {
+                    matches.Add(nextPiece);
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+
+            if(matches.Count >= minLength)
+            {
+                return matches;
+            }
+
+            return null;
+        }
     }
 }
 

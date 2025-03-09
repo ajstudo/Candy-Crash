@@ -4,20 +4,14 @@ using UnityEngine;
 
 namespace AJStudios.Puzzle.Gameplay
 {
-    public enum InterpolationType
-    {
-        Linear,
-        EaseIn,
-        EaseOut,
-        Smooth,
-        Smoother
-    }
     public class GamePiece : MonoBehaviour
     {
         [SerializeField] public int xIndex { get; private set; }
         [SerializeField] public int yIndex { get; private set; }
 
         [SerializeField] private InterpolationType interpolationType = InterpolationType.Smoother;
+
+        [field: SerializeField] public MatchValue matchValue { get; private set; }
 
         private bool _isMoving;
 
